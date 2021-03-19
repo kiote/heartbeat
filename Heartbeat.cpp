@@ -221,10 +221,11 @@ int main(int argc, char * argv[]) {
     }
 
     bool offlineMode = input != "";
-
+    String formatedVideo = "v4l2src device=/dev/video0 ! video/x-raw, format=YUY2, width=640, height=480, framerate=30/1 ! videoconvert ! video/x-raw, format=BGR ! appsink";
+    
     VideoCapture cap;
     if (offlineMode) cap.open(input);
-    else cap.open(0);
+    else cap.open(formatedVideo);
     if (!cap.isOpened()) {
         return -1;
     }
